@@ -13,6 +13,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FC1F4BB71E0C5281009E65F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC1F4BB21E0C5281009E65F6 /* zExamples.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD1152011B4AD240005F0232;
+			remoteInfo = zExamples;
+		};
 		FD11518B1B4ACAC3005F0232 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD1151751B4ACAC2005F0232 /* Project object */;
@@ -23,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC1F4BB21E0C5281009E65F6 /* zExamples.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = zExamples.xcodeproj; sourceTree = "<group>"; };
 		FD11517E1B4ACAC2005F0232 /* JPCActivityIndicatorButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JPCActivityIndicatorButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1151891B4ACAC3005F0232 /* JPCActivityIndicatorButtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JPCActivityIndicatorButtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD11518F1B4ACAC3005F0232 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Tests/Info.plist; sourceTree = "<group>"; };
@@ -50,12 +58,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC1F4BB31E0C5281009E65F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC1F4BB81E0C5281009E65F6 /* zExamples.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FD1151741B4ACAC2005F0232 = {
 			isa = PBXGroup;
 			children = (
 				FD1151801B4ACAC2005F0232 /* JPCActivityIndicatorButton */,
 				FD11518D1B4ACAC3005F0232 /* JPCActivityIndicatorButtonTests */,
 				FD11517F1B4ACAC2005F0232 /* Products */,
+				FC1F4BB21E0C5281009E65F6 /* zExamples.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +182,7 @@
 				TargetAttributes = {
 					FD11517D1B4ACAC2005F0232 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0820;
 					};
 					FD1151881B4ACAC3005F0232 = {
 						CreatedOnToolsVersion = 6.4;
@@ -181,6 +199,12 @@
 			mainGroup = FD1151741B4ACAC2005F0232;
 			productRefGroup = FD11517F1B4ACAC2005F0232 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FC1F4BB31E0C5281009E65F6 /* Products */;
+					ProjectRef = FC1F4BB21E0C5281009E65F6 /* zExamples.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FD11517D1B4ACAC2005F0232 /* JPCActivityIndicatorButton */,
@@ -188,6 +212,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FC1F4BB81E0C5281009E65F6 /* zExamples.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = zExamples.app;
+			remoteRef = FC1F4BB71E0C5281009E65F6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FD11517C1B4ACAC2005F0232 /* Resources */ = {
@@ -341,6 +375,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -361,6 +396,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

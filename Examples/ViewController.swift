@@ -13,19 +13,19 @@ import JPCActivityIndicatorButton
 
 extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return activityIndicator.savedStatesCount
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return activityIndicator[mapStateForIdx(row)]!.name!
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         activityIndicator.transitionSavedState(mapStateForIdx(row), animated: true)
         updateForPickerActivityState()
     }
@@ -47,8 +47,8 @@ class ViewController: UIViewController {
     
     var progressBarHidden: Bool = false {
         didSet {
-            progressLabel.hidden = progressBarHidden
-            progressSlider.hidden = progressBarHidden
+            progressLabel.isHidden = progressBarHidden
+            progressSlider.isHidden = progressBarHidden
         }
     }
     
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     
-    func mapIdxForState(state: String) -> Int {
+    func mapIdxForState(_ state: String) -> Int {
         switch state {
         case Names.Inactive: return 0
         case Names.Spinning: return 1
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func mapStateForIdx(idx: Int) -> String {
+    func mapStateForIdx(_ idx: Int) -> String {
         switch idx {
         case 0: return Names.Inactive
         case 1: return Names.Spinning
@@ -84,19 +84,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.activityIndicator.style = .Solid
+        self.activityIndicator.style = .solid
         
         self.activityIndicator.saveStates([
             ActivityIndicatorButtonState(name: Names.Inactive, image: UIImage(named: "inactive")),
-            ActivityIndicatorButtonState(name: Names.Spinning, progressBarStyle: .Spinning),
-            ActivityIndicatorButtonState(name: Names.ProgressBar, image: UIImage(named: "pause"), progressBarStyle: .Percentage(value: 0)),
-            ActivityIndicatorButtonState(name: Names.Paused, image: UIImage(named: "play"), progressBarStyle: .Percentage(value: 0)),
+            ActivityIndicatorButtonState(name: Names.Spinning, progressBarStyle: .spinning),
+            ActivityIndicatorButtonState(name: Names.ProgressBar, image: UIImage(named: "pause"), progressBarStyle: .percentage(value: 0)),
+            ActivityIndicatorButtonState(name: Names.Paused, image: UIImage(named: "play"), progressBarStyle: .percentage(value: 0)),
             ActivityIndicatorButtonState(name: Names.Complete, tintColor: UIColor(red:0.0, green:0.78, blue:0.33, alpha:1.0), image: UIImage(named: "complete")),
             ActivityIndicatorButtonState(name: Names.Error, tintColor: UIColor(red:0.84, green:0.0, blue:0.0, alpha:1.0), image: UIImage(named: "error"))
         ])
         
-        self.solidButtonSwitch.on = self.activityIndicator.style == .Solid
-        self.enabledSwitch.on = self.activityIndicator.enabled
+        self.solidButtonSwitch.isOn = self.activityIndicator.style == .solid
+        self.enabledSwitch.isOn = self.activityIndicator.isEnabled
         self.progressSlider.value = 0
         
         activityIndicator.transitionSavedState(Names.Inactive, animated: false)
@@ -127,37 +127,37 @@ class ViewController: UIViewController {
         updateForPickerActivityState()
     }
     
-    @IBAction func touchDown(sender: AnyObject) {
+    @IBAction func touchDown(_ sender: AnyObject) {
         print("TOUCH DOWN   WOO!")
     }
 
-    @IBAction func touchDownRepeat(sender: AnyObject) {
+    @IBAction func touchDownRepeat(_ sender: AnyObject) {
         print("TOUCH DOWN REPEAT  WOO! WOO!")
     }
     
-    @IBAction func touchDragInside(sender: AnyObject) {
+    @IBAction func touchDragInside(_ sender: AnyObject) {
         print("TOUCH DRAG INSIDE")
     }
     
-    @IBAction func touchDragOutside(sender: AnyObject) {
+    @IBAction func touchDragOutside(_ sender: AnyObject) {
         print("TOUCH DRAG OUTSIDE")
     }
     
-    @IBAction func touchDragEnter(sender: AnyObject) {
+    @IBAction func touchDragEnter(_ sender: AnyObject) {
         print("TOUCH DRAG ENTER")
     }
     
-    @IBAction func touchDragExit(sender: AnyObject) {
+    @IBAction func touchDragExit(_ sender: AnyObject) {
         print("TOUCH DRAG EXIT")
     }
     
-    @IBAction func touchUpInside(sender: AnyObject) {
+    @IBAction func touchUpInside(_ sender: AnyObject) {
         print("TOUCH UP INSIDE")
         
         nextState()
     }
     
-    @IBAction func touchUpOutside(sender: AnyObject) {
+    @IBAction func touchUpOutside(_ sender: AnyObject) {
         print("TOUCH UP OUTSIDE")
     }
 
@@ -167,7 +167,7 @@ class ViewController: UIViewController {
     
     func updateForPickerActivityState() {
         let idx = mapIdxForState(activityIndicator.activityState.name!)
-        if stateSelector.selectedRowInComponent(0) != idx {
+        if stateSelector.selectedRow(inComponent: 0) != idx {
             stateSelector.selectRow(idx, inComponent: 0, animated: true)
         }
         
@@ -175,15 +175,15 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func solidButtonChanged(sender: UISwitch) {
-        self.activityIndicator.style = sender.on ? .Solid : .Outline
+    @IBAction func solidButtonChanged(_ sender: UISwitch) {
+        self.activityIndicator.style = sender.isOn ? .solid : .outline
     }
     
-    @IBAction func enabledValueChanged(sender: UISwitch) {
-        activityIndicator.enabled = sender.on
+    @IBAction func enabledValueChanged(_ sender: UISwitch) {
+        activityIndicator.isEnabled = sender.isOn
     }
     
-    @IBAction func progressValueChanged(sender: UISlider) {
+    @IBAction func progressValueChanged(_ sender: UISlider) {
         activityIndicator[Names.ProgressBar]?.setProgress(sender.value)
         activityIndicator[Names.Paused]?.setProgress(sender.value)
         

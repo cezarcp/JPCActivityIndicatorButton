@@ -4,7 +4,4 @@
    <FileRef
       location = "group:JPCActivityIndicatorButton.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:/Users/jonc/Developer/mobile/My_Projects/JPCActivityIndicatorButton/zExamples.xcodeproj">
-   </FileRef>
 </Workspace>

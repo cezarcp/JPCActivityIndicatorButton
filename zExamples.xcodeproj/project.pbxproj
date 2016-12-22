@@ -163,6 +163,7 @@
 				TargetAttributes = {
 					FD1152001B4AD240005F0232 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -352,6 +353,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jpchmura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = zExamples;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -363,6 +365,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jpchmura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = zExamples;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
